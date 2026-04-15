@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://hnqq2t5shhtv" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://ds0qc1frdvy46" path="res://assets/art/characters-spritesheet.png" id="2_dovo2"]
+[ext_resource type="Script" uid="uid://bi6f7c8i6qan1" path="res://scenes/player/player_animations.gd" id="3_gmlin"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("2_dovo2")
@@ -456,7 +457,7 @@ states/Jumping/position = Vector2(539.231, 214.95145)
 states/Walking/node = SubResource("AnimationNodeBlendSpace1D_0owmy")
 states/Walking/position = Vector2(211.23102, 208.23145)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qek5x"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_h17s1"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_je7p5"), "Walking", "Falling", SubResource("AnimationNodeStateMachineTransition_dovo2"), "Falling", "Walking", SubResource("AnimationNodeStateMachineTransition_gmlin"), "Falling", "Idle", SubResource("AnimationNodeStateMachineTransition_lvxji"), "Jumping", "Falling", SubResource("AnimationNodeStateMachineTransition_p47bc"), "Idle", "Jumping", SubResource("AnimationNodeStateMachineTransition_75vfm"), "Walking", "Jumping", SubResource("AnimationNodeStateMachineTransition_0owmy")]
-graph_offset = Vector2(30.431019, 48.431442)
+graph_offset = Vector2(30.431019, 134.20067)
 
 [node name="Player" type="CharacterBody2D" unique_id=1207979450 groups=["player"]]
 script = ExtResource("1_8afob")
@@ -492,10 +493,14 @@ libraries/ = SubResource("AnimationLibrary_p47bc")
 tree_root = SubResource("AnimationNodeStateMachine_5gtgg")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/Falling = false
-parameters/conditions/Idle = false
+parameters/conditions/Idle = true
 parameters/conditions/Jumping = false
 parameters/conditions/Walking = false
 parameters/Falling/blend_position = 0.0
 parameters/Idle/blend_position = -0.0029880404
 parameters/Jumping/blend_position = 0.0
 parameters/Walking/blend_position = 0.0
+
+[node name="PlayerAnimations" type="Node2D" parent="." unique_id=516537015 node_paths=PackedStringArray("anim_tree")]
+script = ExtResource("3_gmlin")
+anim_tree = NodePath("../AnimationTree")
