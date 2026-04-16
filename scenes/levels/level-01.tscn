@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c1lsyl6hdwcwc" path="res://assets/art/backgrounds-spritesheet.png" id="1_43mrd"]
 [ext_resource type="Texture2D" uid="uid://uume5mhmdr3q" path="res://assets/art/tiles-spritesheet.png" id="3_1j0ho"]
 [ext_resource type="PackedScene" uid="uid://mtb3m6j6ilk1" path="res://scenes/player/player.tscn" id="3_w44ue"]
+[ext_resource type="PackedScene" uid="uid://dx5njjf5cpdpa" path="res://scenes/items/coin.tscn" id="5_l0wqo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w44ue"]
 texture = ExtResource("1_43mrd")
@@ -217,3 +218,8 @@ shape = SubResource("WorldBoundaryShape2D_l0wqo")
 [node name="Left" type="CollisionShape2D" parent="WorldBoundary" unique_id=390822385]
 position = Vector2(-2034, 0)
 shape = SubResource("WorldBoundaryShape2D_h6en2")
+
+[node name="CoinContainer" type="Node" parent="." unique_id=1759864836]
+
+[node name="Coin" parent="CoinContainer" unique_id=1875029918 instance=ExtResource("5_l0wqo")]
+position = Vector2(433, 393)
