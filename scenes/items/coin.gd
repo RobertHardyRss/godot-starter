@@ -6,8 +6,4 @@ func _on_body_entered(body: Node) -> void:
 	print("coin entered")
 	if body.is_in_group("player"):
 		collected.emit()
-		call_deferred("play_sound")
-		queue_free()
-
-func play_sound() -> void:
-	%CollectSound.play()
+		%AnimationPlayer.play("collect")
