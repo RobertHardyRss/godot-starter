@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://dq6s5atps5ue1" path="res://scripts/main.gd" id="1_iuonh"]
 [ext_resource type="PackedScene" uid="uid://deo4o4ss260tf" path="res://scenes/ui/hud.tscn" id="2_k2fmo"]
 [ext_resource type="PackedScene" uid="uid://cuqr6mknaidr4" path="res://scenes/levels/level-01.tscn" id="2_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://bjh08fga15ryo" path="res://scenes/ui/screen_fade.tscn" id="4_l3cfh"]
 
 [node name="Main" type="Node2D" unique_id=22872528]
 script = ExtResource("1_iuonh")
 
 [node name="LevelHolder" type="Node2D" parent="." unique_id=674304246]
+unique_name_in_owner = true
 
 [node name="Level01" parent="LevelHolder" unique_id=1900646980 instance=ExtResource("2_l3cfh")]
 
@@ -16,3 +18,8 @@ script = ExtResource("1_iuonh")
 [node name="HUD" parent="UILayer" unique_id=2125829556 instance=ExtResource("2_k2fmo")]
 
 [node name="ScreenLayer" type="CanvasLayer" parent="." unique_id=236058012]
+
+[node name="ScreenFade" parent="ScreenLayer" unique_id=419498923 instance=ExtResource("4_l3cfh")]
+unique_name_in_owner = true
+
+[connection signal="faded_out" from="ScreenLayer/ScreenFade" to="." method="_on_screen_fade_faded_out"]

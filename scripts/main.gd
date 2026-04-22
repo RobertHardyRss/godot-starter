@@ -6,7 +6,7 @@ var coins_total := 0
 @onready var hud = $UILayer/HUD
 
 func _ready() -> void:
-	reset_scene()
+	reset_level()
 
 func _on_coin_collected() -> void:
 	score += 1
@@ -14,14 +14,35 @@ func _on_coin_collected() -> void:
 
 	if score >= coins_total:
 		hud.show_message("You win!")
+		%ScreenFade.fade_out()
+
+
+func load_next_level() -> void:
+	# we need to get the current level
+	var current_level = %LevelHolder.get_child(0)
+	if current_level == null:
+		# how do we even get here?
+		# maybe end game?
+		return
+	
+	var next_level_path : String = current_level.get("next_level")
+	
+	if next_level_path != null:
+		var next_level = load(next_level_path)
+		var level = next_level.instantiate()
 		
-		# we need to get the current level
-		# get the next level resource and load/validate
-		# we need to queue_free current level
-		# we need a new level instance in LevelHolder
+		if level is BaseLevel:
+			current_level.queue_free()
+			%LevelHolder.add_child(level)
+			reset_level()
+			%ScreenFade.fade_in()
+	
+	# if we get here without a level we are hosed
+	# maybe create a game over scene for a fallback
 
 
-func reset_scene() -> void:
+func reset_level() -> void:
+	score = 0
 	var coins = get_tree().get_nodes_in_group("coins")
 	coins_total = coins.size()
 
@@ -30,3 +51,7 @@ func reset_scene() -> void:
 
 	hud.set_score(score)
 	hud.show_message("Collect all the coins!")
+
+
+func _on_screen_fade_faded_out():
+	load_next_level()
