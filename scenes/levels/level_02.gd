@@ -4,6 +4,7 @@ extends BaseLevel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	next_level = "uid://cuqr6mknaidr4" # level 01
+	this_level = "uid://h7st67rvs6ph"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

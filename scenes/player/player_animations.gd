@@ -16,6 +16,7 @@ func _physics_process(_delta) -> void:
 	anim_tree.set("parameters/conditions/Idle", state == Player.PlayerStates.IDLE)
 	anim_tree.set("parameters/conditions/Jumping", state == Player.PlayerStates.JUMPING)
 	anim_tree.set("parameters/conditions/Walking", state == Player.PlayerStates.WALKING)
+	anim_tree.set("parameters/conditions/Dead", state == Player.PlayerStates.DEAD)
 
 	# set blend to player velocity x
 	anim_tree.set("parameters/Falling/blend_position", facing)

@@ -5,7 +5,16 @@ var coins_total := 0
 
 @onready var hud = $UILayer/HUD
 
+enum GameStates {
+	NORMAL,
+	PLAYER_DEAD,
+	LEVEL_COMPLETE
+}
+
+var current_state : GameStates = GameStates.NORMAL
+
 func _ready() -> void:
+	GlobalSignals.player_death.connect(_on_player_death)
 	reset_level()
 
 func _on_coin_collected() -> void:
@@ -13,11 +22,14 @@ func _on_coin_collected() -> void:
 	hud.set_score(score)
 
 	if score >= coins_total:
+		current_state = GameStates.LEVEL_COMPLETE
 		hud.show_message("You win!")
 		%ScreenFade.fade_out()
 
 
 func load_next_level() -> void:
+	current_state = GameStates.NORMAL
+	
 	# we need to get the current level
 	var current_level = %LevelHolder.get_child(0)
 	if current_level == null:
@@ -40,7 +52,22 @@ func load_next_level() -> void:
 	# if we get here without a level we are hosed
 	# maybe create a game over scene for a fallback
 
-
+func reload_current_level() -> void:
+	current_state = GameStates.NORMAL
+	var current_level = %LevelHolder.get_child(0)
+	
+	if current_level is BaseLevel:
+		var current_level_path = current_level.get("this_level")
+		var reload_level = load(current_level_path)
+		var level = reload_level.instantiate()
+		current_level.queue_free()
+		%LevelHolder.add_child(level)
+		reset_level()
+		%ScreenFade.fade_in()
+	
+	
+	
+	
 func reset_level() -> void:
 	score = 0
 	var coins = get_tree().get_nodes_in_group("coins")
@@ -54,4 +81,12 @@ func reset_level() -> void:
 
 
 func _on_screen_fade_faded_out():
-	load_next_level()
+	match current_state:
+		GameStates.LEVEL_COMPLETE:
+			load_next_level()
+		GameStates.PLAYER_DEAD:
+			reload_current_level()
+
+func _on_player_death():
+	current_state = GameStates.PLAYER_DEAD
+	%ScreenFade.fade_out()
