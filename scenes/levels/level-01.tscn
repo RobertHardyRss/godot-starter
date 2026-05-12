@@ -225,7 +225,37 @@ shape = SubResource("WorldBoundaryShape2D_h6en2")
 [node name="Coin" parent="CoinContainer" unique_id=1875029918 instance=ExtResource("5_l0wqo")]
 position = Vector2(433, 393)
 
+[node name="Coin2" parent="CoinContainer" unique_id=334234970 instance=ExtResource("5_l0wqo")]
+position = Vector2(1340, 197)
+
+[node name="Coin3" parent="CoinContainer" unique_id=728557887 instance=ExtResource("5_l0wqo")]
+position = Vector2(522, -54)
+
+[node name="Coin4" parent="CoinContainer" unique_id=1003198282 instance=ExtResource("5_l0wqo")]
+position = Vector2(-397, 585)
+
+[node name="Coin5" parent="CoinContainer" unique_id=164717295 instance=ExtResource("5_l0wqo")]
+position = Vector2(2162, 321)
+
 [node name="EnemiesContainer" type="Node" parent="." unique_id=527434513]
 
 [node name="Bee" parent="EnemiesContainer" unique_id=35683715 instance=ExtResource("6_h6en2")]
 position = Vector2(717, 353)
+
+[node name="Bee2" parent="EnemiesContainer" unique_id=1070531421 instance=ExtResource("6_h6en2")]
+position = Vector2(-197, 581)
+current_facing = 1
+
+[node name="Bee3" parent="EnemiesContainer" unique_id=2049765475 instance=ExtResource("6_h6en2")]
+position = Vector2(762, 705)
+current_facing = 1
+
+[node name="Bee4" parent="EnemiesContainer" unique_id=716779404 instance=ExtResource("6_h6en2")]
+position = Vector2(1882, 210)
+
+[node name="Bee5" parent="EnemiesContainer" unique_id=1798698373 instance=ExtResource("6_h6en2")]
+position = Vector2(1036, 3)
+current_facing = 1
+
+[node name="Bee6" parent="EnemiesContainer" unique_id=1989639280 instance=ExtResource("6_h6en2")]
+position = Vector2(-482, 116)

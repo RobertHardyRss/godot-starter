@@ -164,6 +164,8 @@ states/Start/position = Vector2(177.6, 98.624)
 transitions = ["Start", "Fly", SubResource("AnimationNodeStateMachineTransition_m8jay")]
 
 [node name="Bee" type="CharacterBody2D" unique_id=35683715]
+collision_layer = 3
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_vnmv4")
 bob_amplitude = 20.0
@@ -182,6 +184,8 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_mvhs4")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1226024687]
+collision_layer = 4
+collision_mask = 2
 
 [node name="HurtBoxCollision" type="CollisionShape2D" parent="HurtBox" unique_id=995680177]
 position = Vector2(-22, -20)
