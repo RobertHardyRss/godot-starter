@@ -1,15 +1,14 @@
-[gd_scene format=3 uid="uid://cpius5bn5kf5q"]
+[gd_scene format=3 uid="uid://chafcw8pwjhmi"]
 
-[ext_resource type="Texture2D" uid="uid://b2fe5wxj674u6" path="res://assets/art/enemies-spritesheet.png" id="1_mvhs4"]
-[ext_resource type="Script" uid="uid://c0yiohhu4ydlr" path="res://scenes/enemies/bee.gd" id="1_vnmv4"]
+[ext_resource type="Script" uid="uid://478nlqg0vdba" path="res://scenes/enemies/blade.gd" id="1_14y3k"]
+[ext_resource type="Texture2D" uid="uid://b2fe5wxj674u6" path="res://assets/art/enemies-spritesheet.png" id="2_652rc"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mvhs4"]
-radius = 14.0
-height = 40.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_14y3k"]
+radius = 38.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vnmv4"]
-radius = 9.0
-height = 18.0
+radius = 26.0
+height = 54.0
 
 [sub_resource type="Animation" id="Animation_mvhs4"]
 length = 0.001
@@ -23,7 +22,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [31]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -36,23 +35,11 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HurtBox/HurtBoxCollision:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [-22.0]
 }
 
 [sub_resource type="Animation" id="Animation_vnmv4"]
 resource_name = "fly_left"
-length = 0.4
+length = 0.25
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -62,10 +49,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [3, 4, 5, 4]
+"values": [31, 32, 33]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -79,22 +66,10 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HurtBox/HurtBoxCollision:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [22.0]
-}
 
 [sub_resource type="Animation" id="Animation_1v56o"]
 resource_name = "fly_right"
-length = 0.4
+length = 0.25
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -104,10 +79,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [3, 4, 5, 4]
+"values": [31, 32, 33]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -120,18 +95,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HurtBox/HurtBoxCollision:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [-22.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1v56o"]
@@ -163,32 +126,29 @@ states/Fly/position = Vector2(361.2, 96)
 states/Start/position = Vector2(177.6, 98.624)
 transitions = ["Start", "Fly", SubResource("AnimationNodeStateMachineTransition_m8jay")]
 
-[node name="Bee" type="CharacterBody2D" unique_id=35683715]
-collision_layer = 5
-collision_mask = 3
+[node name="Blade" type="CharacterBody2D" unique_id=35683715]
+collision_layer = 4
 motion_mode = 1
-script = ExtResource("1_vnmv4")
-bob_amplitude = 20.0
-bob_frequency = 10.0
+script = ExtResource("1_14y3k")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=651457993]
 position = Vector2(0, -27)
-texture = ExtResource("1_mvhs4")
+texture = ExtResource("2_652rc")
 hframes = 8
 vframes = 8
-frame = 3
+frame = 31
 
 [node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1022403387]
-position = Vector2(5, -22)
+position = Vector2(0, -26)
 rotation = -1.5707964
-shape = SubResource("CapsuleShape2D_mvhs4")
+shape = SubResource("CircleShape2D_14y3k")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1226024687]
 collision_layer = 64
 collision_mask = 2
 
 [node name="HurtBoxCollision" type="CollisionShape2D" parent="HurtBox" unique_id=995680177]
-position = Vector2(-22, -20)
+position = Vector2(0, -26)
 shape = SubResource("CapsuleShape2D_vnmv4")
 debug_color = Color(0.9626661, 0.14279497, 0.3427366, 0.41960785)
 

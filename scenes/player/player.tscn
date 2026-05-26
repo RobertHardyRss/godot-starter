@@ -559,7 +559,7 @@ graph_offset = Vector2(30.431019, 58.41707)
 
 [node name="Player" type="CharacterBody2D" unique_id=1207979450 groups=["player"]]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 73
 script = ExtResource("1_8afob")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=887843595]

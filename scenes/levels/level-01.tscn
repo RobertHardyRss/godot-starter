@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://mtb3m6j6ilk1" path="res://scenes/player/player.tscn" id="3_w44ue"]
 [ext_resource type="PackedScene" uid="uid://dx5njjf5cpdpa" path="res://scenes/items/coin.tscn" id="5_l0wqo"]
 [ext_resource type="PackedScene" uid="uid://cpius5bn5kf5q" path="res://scenes/enemies/bee.tscn" id="6_h6en2"]
+[ext_resource type="PackedScene" uid="uid://chafcw8pwjhmi" path="res://scenes/enemies/blade.tscn" id="7_5yx1i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w44ue"]
 texture = ExtResource("1_43mrd")
@@ -239,8 +240,11 @@ position = Vector2(2162, 321)
 
 [node name="EnemiesContainer" type="Node" parent="." unique_id=527434513]
 
-[node name="Bee" parent="EnemiesContainer" unique_id=35683715 instance=ExtResource("6_h6en2")]
-position = Vector2(717, 353)
+[node name="Blade" parent="EnemiesContainer" unique_id=35683715 instance=ExtResource("7_5yx1i")]
+position = Vector2(122, 323)
+
+[node name="Bee" parent="EnemiesContainer" unique_id=802741109 instance=ExtResource("6_h6en2")]
+position = Vector2(1448, 450)
 
 [node name="Bee2" parent="EnemiesContainer" unique_id=1070531421 instance=ExtResource("6_h6en2")]
 position = Vector2(-197, 581)
